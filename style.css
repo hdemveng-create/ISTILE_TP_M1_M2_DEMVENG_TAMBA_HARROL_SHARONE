@@ -1,0 +1,184 @@
+/* Couleurs de la charte ISTILE */
+:root {
+  --bleu: #1941B3;
+  --rouge: #FF135A;
+  --vert: #1C8275;
+  --texte: #1a1a1a;
+  --fond: #f4f6fb;
+  --blanc: #ffffff;
+}
+
+/* Tous les éléments comptent la bordure et le padding dans leur largeur */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  color: var(--texte);
+  background-color: var(--fond);
+}
+
+/* Focus visible sur les liens, champs et boutons */
+a:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--rouge);
+  outline-offset: 2px;
+}
+
+/* ---------- En-tête (mobile d'abord) ---------- */
+.entete {
+  background-color: var(--bleu);
+  color: var(--blanc);
+  padding: 1rem;
+  border-bottom: 4px solid var(--rouge);
+}
+
+.entete h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.6rem;
+}
+
+.entete ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.entete a {
+  color: var(--blanc);
+  text-decoration: underline;
+}
+
+/* Dans l'en-tête bleu, le focus est blanc pour rester visible */
+.entete a:focus-visible {
+  outline-color: var(--blanc);
+}
+
+/* ---------- Contenu principal ---------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: var(--bleu);
+  border-bottom: 3px solid var(--rouge);
+  padding-bottom: 0.25rem;
+}
+
+/* ---------- Formulaire de recherche ---------- */
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formulaire label {
+  font-weight: bold;
+}
+
+.formulaire input {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 2px solid var(--bleu);
+  border-radius: 4px;
+}
+
+.formulaire button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  color: var(--blanc);
+  background-color: var(--bleu);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formulaire button:hover {
+  background-color: var(--vert);
+}
+
+/* ---------- Cartes des étudiants ---------- */
+/* 1 colonne par défaut (mobile) */
+.cartes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.carte {
+  background-color: var(--blanc);
+  padding: 1rem;
+  border: 1px solid #d5dbe8;
+  border-left: 5px solid var(--bleu);
+  border-radius: 4px;
+}
+
+.carte h3 {
+  margin: 0 0 0.5rem;
+  color: var(--bleu);
+}
+
+.carte p {
+  margin: 0.25rem 0;
+}
+
+.carte .note {
+  font-weight: bold;
+  color: var(--vert);
+}
+
+/* ---------- Contact ---------- */
+#contact a {
+  color: var(--bleu);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Pied de page ---------- */
+.pied {
+  background-color: var(--bleu);
+  color: var(--blanc);
+  text-align: center;
+  padding: 1rem;
+}
+
+.pied p {
+  margin: 0;
+}
+
+/* ---------- Tablette : 2 colonnes à partir de 640px ---------- */
+@media (min-width: 640px) {
+  .cartes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .formulaire {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .formulaire input {
+    flex: 1;
+  }
+}
+
+/* ---------- Ordinateur : 3 colonnes à partir de 1024px ---------- */
+@media (min-width: 1024px) {
+  .cartes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

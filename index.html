@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISTILE Annuaire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="entete">
+    <h1>ISTILE Annuaire</h1>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#recherche">Recherche</a></li>
+        <li><a href="#etudiants">Étudiants</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Section 1 : formulaire de recherche (il ne fonctionne pas encore) -->
+    <section id="recherche">
+      <h2>Recherche</h2>
+      <form class="formulaire" role="search">
+        <label for="champ-recherche">Nom d'un étudiant</label>
+        <input type="search" id="champ-recherche" name="recherche" placeholder="Ex : Fotso">
+        <button type="button">Rechercher</button>
+      </form>
+    </section>
+
+    <!-- Section 2 : les 6 premiers étudiants du fichier JSON -->
+    <section id="etudiants">
+      <h2>Étudiants</h2>
+      <div class="cartes">
+
+        <article class="carte">
+          <h3>Aïcha Ngo</h3>
+          <p>Filière : Informatique</p>
+          <p class="note">Note : 14</p>
+        </article>
+
+        <article class="carte">
+          <h3>Paul Tchinda</h3>
+          <p>Filière : Réseaux</p>
+          <p class="note">Note : 9</p>
+        </article>
+
+        <article class="carte">
+          <h3>Marie Fotso</h3>
+          <p>Filière : Génie logiciel</p>
+          <p class="note">Note : 16</p>
+        </article>
+
+        <article class="carte">
+          <h3>Christelle Nkou</h3>
+          <p>Filière : Informatique</p>
+          <p class="note">Note : 11,5</p>
+        </article>
+
+        <article class="carte">
+          <h3>Brice Essomba</h3>
+          <p>Filière : Réseaux</p>
+          <p class="note">Note : 7,5</p>
+        </article>
+
+        <article class="carte">
+          <h3>Linda Mvondo</h3>
+          <p>Filière : Génie logiciel</p>
+          <p class="note">Note : 13</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Section 3 : contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Pour toute question, écrivez au secrétariat académique :
+        <a href="mailto:secretariat@istile.cm">secretariat@istile.cm</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="pied">
+    <p>© 2026 ISTILE – Mini-TP Modules 1 et 2</p>
+  </footer>
+
+</body>
+</html>
