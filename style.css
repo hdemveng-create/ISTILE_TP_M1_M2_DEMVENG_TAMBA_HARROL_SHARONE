@@ -1,184 +1,394 @@
-/* Couleurs de la charte ISTILE */
+/* =========================================================
+   ISTILE ANNUAIRE — Nouvelle direction visuelle
+   Palette : Bleu #1941B3 | Rouge #FF135A | Vert #1C8275
+   ========================================================= */
+
 :root {
   --bleu: #1941B3;
   --rouge: #FF135A;
   --vert: #1C8275;
-  --texte: #1a1a1a;
-  --fond: #f4f6fb;
-  --blanc: #ffffff;
+  --texte: #172033;
+  --fond: #F3F5FA;
+  --blanc: #FFFFFF;
+
+  --bleu-clair: #E9EEFF;
+  --vert-clair: #E7F4F1;
+  --rouge-clair: #FFF0F4;
+  --texte-secondaire: #667085;
+  --bordure: #E1E6F0;
+
+  --ombre-douce: 0 12px 32px rgba(25, 45, 95, 0.08);
+  --rayon: 18px;
 }
 
-/* Tous les éléments comptent la bordure et le padding dans leur largeur */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.5;
-  color: var(--texte);
-  background-color: var(--fond);
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
 }
 
-/* Focus visible sur les liens, champs et boutons */
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--texte);
+  background:
+    radial-gradient(circle at 8% 8%, rgba(25, 65, 179, 0.07), transparent 25rem),
+    radial-gradient(circle at 95% 35%, rgba(28, 130, 117, 0.06), transparent 22rem),
+    var(--fond);
+}
+
+/* Accessibilité */
+
 a:focus-visible,
 input:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--rouge);
-  outline-offset: 2px;
+  outline-offset: 4px;
 }
 
-/* ---------- En-tête (mobile d'abord) ---------- */
+/* ===================== EN-TÊTE ===================== */
+
 .entete {
-  background-color: var(--bleu);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 1.4rem clamp(1.25rem, 5vw, 5rem);
   color: var(--blanc);
-  padding: 1rem;
-  border-bottom: 4px solid var(--rouge);
+  background: var(--bleu);
+  border-bottom: 5px solid var(--rouge);
+  box-shadow: 0 8px 24px rgba(25, 65, 179, 0.16);
 }
 
 .entete h1 {
-  margin: 0 0 0.75rem;
-  font-size: 1.6rem;
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
-.entete ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.entete nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .entete a {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
   color: var(--blanc);
-  text-decoration: underline;
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: background-color 180ms ease, border-color 180ms ease,
+              transform 180ms ease;
 }
 
-/* Dans l'en-tête bleu, le focus est blanc pour rester visible */
+.entete a:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
 .entete a:focus-visible {
   outline-color: var(--blanc);
 }
 
-/* ---------- Contenu principal ---------- */
+/* ===================== CONTENU ===================== */
+
 main {
-  max-width: 1100px;
+  width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 1rem;
+  padding: clamp(2rem, 5vw, 4rem) 0;
 }
 
 section {
-  margin-bottom: 2rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 h2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 1.4rem;
+  padding: 0 0 0.8rem;
   color: var(--bleu);
-  border-bottom: 3px solid var(--rouge);
-  padding-bottom: 0.25rem;
+  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  border-bottom: 1px solid var(--bordure);
 }
 
-/* ---------- Formulaire de recherche ---------- */
+h2::after {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 68px;
+  height: 4px;
+  content: "";
+  background: var(--rouge);
+  border-radius: 999px;
+}
+
+/* ===================== RECHERCHE ===================== */
+
+#recherche {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre-douce);
+}
+
 .formulaire {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 0.75rem;
 }
 
 .formulaire label {
-  font-weight: bold;
+  grid-column: 1 / -1;
+  color: var(--texte);
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .formulaire input {
-  padding: 0.6rem;
-  font-size: 1rem;
-  border: 2px solid var(--bleu);
-  border-radius: 4px;
+  width: 100%;
+  min-width: 0;
+  padding: 0.9rem 1rem;
+  color: var(--texte);
+  font: inherit;
+  background: #FAFBFE;
+  border: 1.5px solid var(--bordure);
+  border-radius: 12px;
+  transition: border-color 180ms ease, box-shadow 180ms ease,
+              background-color 180ms ease;
+}
+
+.formulaire input::placeholder {
+  color: #98A2B3;
+}
+
+.formulaire input:focus {
+  background: var(--blanc);
+  border-color: var(--bleu);
+  box-shadow: 0 0 0 4px rgba(25, 65, 179, 0.1);
+  outline: none;
 }
 
 .formulaire button {
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
+  min-height: 49px;
+  padding: 0.8rem 1.35rem;
   color: var(--blanc);
-  background-color: var(--bleu);
-  border: none;
-  border-radius: 4px;
+  font: inherit;
+  font-weight: 750;
+  background: var(--rouge);
+  border: 0;
+  border-radius: 12px;
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(255, 19, 90, 0.18);
+  transition: transform 180ms ease, background-color 180ms ease,
+              box-shadow 180ms ease;
 }
 
 .formulaire button:hover {
-  background-color: var(--vert);
+  background: #E90D50;
+  box-shadow: 0 9px 18px rgba(255, 19, 90, 0.24);
+  transform: translateY(-2px);
 }
 
-/* ---------- Cartes des étudiants ---------- */
-/* 1 colonne par défaut (mobile) */
+.formulaire button:active {
+  transform: translateY(0);
+}
+
+/* ===================== CARTES ÉTUDIANTS ===================== */
+
 .cartes {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
 }
 
 .carte {
-  background-color: var(--blanc);
-  padding: 1rem;
-  border: 1px solid #d5dbe8;
-  border-left: 5px solid var(--bleu);
-  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  padding: 1.35rem;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  box-shadow: 0 5px 18px rgba(25, 45, 95, 0.045);
+  transition: transform 200ms ease, box-shadow 200ms ease,
+              border-color 200ms ease;
+}
+
+.carte::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  content: "";
+  background: linear-gradient(90deg, var(--bleu) 0 62%, var(--rouge) 62% 82%, var(--vert) 82%);
+}
+
+.carte:hover {
+  border-color: rgba(25, 65, 179, 0.28);
+  box-shadow: var(--ombre-douce);
+  transform: translateY(-5px);
 }
 
 .carte h3 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.9rem;
   color: var(--bleu);
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .carte p {
-  margin: 0.25rem 0;
+  margin: 0.45rem 0;
+  color: var(--texte-secondaire);
+  font-size: 0.94rem;
 }
 
 .carte .note {
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.7rem;
   color: var(--vert);
+  font-size: 0.88rem;
+  font-weight: 800;
+  background: var(--vert-clair);
+  border-radius: 999px;
 }
 
-/* ---------- Contact ---------- */
+/* ===================== CONTACT ===================== */
+
+#contact {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--bleu-clair);
+  border: 1px solid rgba(25, 65, 179, 0.12);
+  border-radius: var(--rayon);
+}
+
+#contact h2 {
+  border-bottom-color: rgba(25, 65, 179, 0.16);
+}
+
+#contact p {
+  margin: 0;
+  color: #34415D;
+}
+
 #contact a {
   color: var(--bleu);
+  font-weight: 750;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
   overflow-wrap: anywhere;
 }
 
-/* ---------- Pied de page ---------- */
+#contact a:hover {
+  color: var(--rouge);
+}
+
+/* ===================== PIED DE PAGE ===================== */
+
 .pied {
-  background-color: var(--bleu);
+  padding: 1.4rem 1rem;
   color: var(--blanc);
   text-align: center;
-  padding: 1rem;
+  background: var(--bleu);
+  border-top: 4px solid var(--rouge);
 }
 
 .pied p {
   margin: 0;
+  font-size: 0.9rem;
+  font-weight: 550;
 }
 
-/* ---------- Tablette : 2 colonnes à partir de 640px ---------- */
-@media (min-width: 640px) {
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width: 850px) {
   .cartes {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .entete {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1.2rem 1rem;
+  }
+
+  .entete nav,
+  .entete nav ul {
+    width: 100%;
+  }
+
+  .entete nav ul {
+    gap: 0.35rem;
+  }
+
+  .entete a {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.88rem;
+  }
+
+  main {
+    width: min(100% - 1.25rem, 1120px);
+    padding-top: 1.5rem;
   }
 
   .formulaire {
-    flex-direction: row;
-    align-items: center;
+    grid-template-columns: 1fr;
   }
 
-  .formulaire input {
-    flex: 1;
+  .formulaire button {
+    width: 100%;
+  }
+
+  .cartes {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .carte {
+    padding: 1.2rem;
   }
 }
 
-/* ---------- Ordinateur : 3 colonnes à partir de 1024px ---------- */
-@media (min-width: 1024px) {
-  .cartes {
-    grid-template-columns: repeat(3, 1fr);
+/* Respect des préférences de réduction des animations */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
