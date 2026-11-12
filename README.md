@@ -1,2 +1,10 @@
-# ISTILE_TP_M1_M2_DEMVENG_TAMBA_HARROL_SHARONE
+# ISTILE\_TP\_M1\_M2\_DEMVENG\_TAMBA\_HARROL\_SHARONE
+
 Mini TP de construction d'un petit annuaire de ISTILE
+
+
+
+\## Commande de lancement du programme
+
+npm start
+
